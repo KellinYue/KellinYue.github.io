@@ -168,7 +168,7 @@
 <li><p>根据任务优先级进行转发</p>
 </li>
 </ul>
-<p>​        由于工作业务需要，各分系统统一将任务消息发送到Kafka中，所以设计的任务调度中间件业务逻辑如下图所示：</p>
+<p>​       由于工作业务需要，各分系统指定将任务消息发送到Kafka中，同时为了满足可以根据任务优先级进行转发的需要，设计利用RabbitMQ优先级队列进行任务转发，构造一条Kafka-RabbitMQ数据管道，因此设计的任务调度中间件业务逻辑如下图所示：</p>
 <p><img src="https://gitee.com/ellisonYX/pic-test/raw/master/img/Kafka.png"></p>
 <p>​        代码如下所示：    </p>
 <ul>
