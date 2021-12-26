@@ -15,10 +15,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Spring Cloud + Vue 电商项目开发实战(2) ——配置Druid及slf4j配置Druid​        数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个，释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。通过数据库连接池能明显提高对数据库操作的性能。 ​        Spri">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/ellisonYX/pic-test/raw/master/img/2112261.png">
+<meta property="og:image" content="https://gitee.com/ellisonYX/pic-test/raw/master/img/2112262.png">
 <meta property="article:published_time" content="2021-12-24T04:48:13.866Z">
-<meta property="article:modified_time" content="2021-12-26T04:18:13.813Z">
+<meta property="article:modified_time" content="2021-12-26T04:24:33.874Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/ellisonYX/pic-test/raw/master/img/2112261.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -193,7 +196,7 @@
 <li><p>在pom.xml文件中添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- @Slf4j注解 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>在idea下添加Lombok插件</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/ellisonYX/pic-test/raw/master/img/%E6%88%AA%E5%B1%8F2021-12-26">https://gitee.com/ellisonYX/pic-test/raw/master/img/截屏2021-12-26</a> 下午12.07.39.png)</p>
+<p><img src="https://gitee.com/ellisonYX/pic-test/raw/master/img/2112261.png"></p>
 </li>
 <li><p>修改application.yaml文件</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">config:</span> <span class="string">logback.xml</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">com.springframe.festmon.dao:</span> <span class="string">trace</span></span><br></pre></td></tr></table></figure></li>
@@ -204,7 +207,7 @@
 <li><p>修改SysUserController文件</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysUserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SysUserService sysUserService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;选择全部用户&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/user/selectAll&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">selectAllUsers</span><span class="params">()</span></span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;======测试日志info级别打印=====&quot;</span>);</span><br><span class="line">        log.error(<span class="string">&quot;=====测试日志error级别打印====&quot;</span>);</span><br><span class="line">        log.warn(<span class="string">&quot;======测试日志warn级别打印=====&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> sysUserService.list();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>测试结果如下</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/ellisonYX/pic-test/raw/master/img/%E6%88%AA%E5%B1%8F2021-12-26">https://gitee.com/ellisonYX/pic-test/raw/master/img/截屏2021-12-26</a> 下午12.16.52.png)</p>
+<p><img src="https://gitee.com/ellisonYX/pic-test/raw/master/img/2112262.png"></p>
 </li>
 </ul>
 </li>
